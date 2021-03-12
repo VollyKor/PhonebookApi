@@ -7,11 +7,10 @@ const noteSchema = new Schema(
       type: String,
       required: [true, "title required"],
     },
-    decr: {
+    text: {
       type: String,
       default: "",
     },
-    date: { type: Date, default: () => Date.now() },
     //   owner: {
     //     type: SchemaTypes.ObjectId,
     //     ref: "user",
