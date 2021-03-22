@@ -1,5 +1,5 @@
 const Joi = require("joi");
-const { HttpCode } = require("../../helpers/Constants");
+const { HttpCode } = require("../../helpers/constants");
 
 const schemaValidateNewUser = Joi.object({
   name: Joi.string().min(3).max(16).required(),
