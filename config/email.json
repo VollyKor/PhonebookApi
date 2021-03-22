@@ -1,0 +1,5 @@
+{
+  "dev": "http://localhost:3000",
+  "stage": "",
+  "prod": "https://vol-kor-pet-project.herokuapp.com"
+}

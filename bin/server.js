@@ -1,8 +1,7 @@
 const app = require("../app");
 const db = require("../model/db");
-const debug = require("debug")("phonebookapi:server");
 
-const PORT = normalizePort(process.env.PORT || "3001");
+const PORT = normalizePort(process.env.PORT || "3000");
 app.set("port", PORT);
 
 app.listen(PORT, () => {
