@@ -18,7 +18,6 @@ const contactSchema = new Schema(
       //   unique: true,
     },
 
-    date: { type: Date, default: () => Date.now() },
     owner: {
       type: SchemaTypes.ObjectId,
       ref: "user",

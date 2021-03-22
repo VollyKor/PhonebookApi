@@ -48,6 +48,15 @@ const login = async (req, res, next) => {
     const user = await Users.findByEmail(email);
     const isValidPassword = await user?.validPassword(password);
 
+    if (!user) {
+      return res.status(HttpCode.UNAUTHORIZED).json({
+        status: "error",
+        code: HttpCode.UNAUTHORIZED,
+        data: "UNAUTHORIZED",
+        message: "Invalid credentials",
+      });
+    }
+
     if (!user.verify) {
       return res.status(HttpCode.UNAUTHORIZED).json({
         status: "error",
@@ -57,7 +66,7 @@ const login = async (req, res, next) => {
       });
     }
 
-    if (!user || !isValidPassword || !user.verify) {
+    if (!isValidPassword) {
       return res.status(HttpCode.UNAUTHORIZED).json({
         status: "error",
         code: HttpCode.UNAUTHORIZED,
