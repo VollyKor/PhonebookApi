@@ -1,5 +1,5 @@
 const createError = require("http-errors");
-// const path = require("path");
+const path = require("path");
 const express = require("express");
 const logger = require("morgan");
 const cors = require("cors");
@@ -13,16 +13,11 @@ const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 app.use(logger(formatsLogger));
 
-// view engine setup
-// app.set("views", path.join(__dirname, "views"));
-// app.set("view engine", "ejs");
-
 app.use(cors());
 app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
 
 // static folder
-// app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use("/users", usersRouter);
 app.use("/contacts", contactRouter);
 app.use("/notes", notesRouter);
