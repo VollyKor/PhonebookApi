@@ -12,9 +12,9 @@ const getById = async (userId, contactId) => {
 
 const add = async (noteObj) => await Note.create(noteObj);
 
-const change = async (userId, data) => {
+const change = async (userId, noteId, data) => {
   const changedNote = await Note.findOneAndUpdate(
-    { owner: userId, _id: data.id },
+    { owner: userId, _id: noteId },
     data,
     { new: true }
   );
@@ -23,6 +23,7 @@ const change = async (userId, data) => {
 
 const remove = async (userId, noteId) => {
   try {
+    console.log(noteId);
     const deletedNote = await Note.findOneAndRemove({
       owner: userId,
       _id: noteId,

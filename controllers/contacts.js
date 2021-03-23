@@ -28,7 +28,6 @@ const getAll = async (req, res, next) => {
 const getById = async (req, res, next) => {
   try {
     const userId = req.user.id;
-    const contactId = req.params.contactId;
     const contact = await Contacts.getById(contactId, userId);
 
     if (contact) {

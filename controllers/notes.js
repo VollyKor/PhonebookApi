@@ -66,9 +66,9 @@ const createNote = async (req, res, next) => {
 const changeNote = async (req, res, next) => {
   try {
     const userId = req.user.id;
+    const noteId = req.params.noteId;
     const data = req.body;
-
-    const changedNote = await Notes.change(userId, data);
+    const changedNote = await Notes.change(userId, noteId, data);
 
     if (changedNote) {
       return res.status(200).json({
@@ -91,7 +91,7 @@ const changeNote = async (req, res, next) => {
 const removeNote = async (req, res, next) => {
   const userId = req.user.id;
   try {
-    const noteId = req.body.id;
+    const noteId = req.params.noteId;
     await Notes.remove(userId, noteId);
     return res.status(HttpCode.NO_CONTENT).json({});
   } catch (e) {
